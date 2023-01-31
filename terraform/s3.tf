@@ -72,6 +72,10 @@ resource "aws_s3_bucket" "logs" {
   versioning {
     enabled = true
   }
+  logging {
+    target_bucket = "${aws_s3_buckets.logs.id}"
+    target_prefix ="log/"
+  }
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
